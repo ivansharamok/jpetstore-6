@@ -124,6 +124,11 @@
       <artifactId>hsqldb</artifactId>
       <version>${hsqldb.version}</version>
     </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>6.0.6</version>
+    </dependency>
 
     <!-- Test dependencies -->
     <dependency>
