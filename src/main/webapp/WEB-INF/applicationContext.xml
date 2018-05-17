@@ -35,10 +35,11 @@
         <jdbc:script location="classpath:database/jpetstore-hsqldb-dataload.sql"/>
     </jdbc:embedded-database>
     -->
+    <!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"> -->
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <!-- results in a setDriverClassName(String) call -->
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/jpetstore?useSSL=false"/>
+        <property name="url" value="jdbc:mysql://db:3306/jpetstore?useSSL=false"/>
         <property name="username" value="root"/>
         <property name="password" value="root"/>
     </bean>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-       Copyright 2010-2016 the original author or authors.
+       Copyright 2010-2018 the original author or authors.
 
        Licensed under the Apache License, Version 2.0 (the "License");
        you may not use this file except in compliance with the License.
@@ -21,9 +21,11 @@
 
 <mapper namespace="org.mybatis.jpetstore.mapper.ItemMapper">
 
-  <cache />
+  <cache/>
+  <!-- Cache configuration example -->
+  <!-- <cache eviction="FIFO" flushInterval="2000" size="512" readOnly="true"/> -->
 
-  <select id="getItemListByProduct" resultType="Item">
+  <select id="getItemListByProduct" resultType="Item" flushCache="true" useCache="true">
     SELECT
       I.ITEMID,
       LISTPRICE,
@@ -44,7 +46,7 @@
     AND I.PRODUCTID = #{value}
   </select>
 
-  <select id="getItem" resultType="Item">
+  <select id="getItem" resultType="Item" flushCache="true" useCache="true">
     select
       I.ITEMID,
       LISTPRICE,
