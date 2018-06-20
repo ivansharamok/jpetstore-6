@@ -10,10 +10,10 @@ ENV MYSQL_DATABASE=jpetstore \
     MYSQL_PASSWORD=jps
 
 #ADD sql/jps-schema.sql /docker-entrypoint-initdb.d/
-ADD sql/jps-schema-if-not-exists.sql /docker-entrypoint-initdb.d/
+ADD ${WORKSPACE}/docker/db/sql/jps-schema-if-not-exists.sql /docker-entrypoint-initdb.d/
 RUN mkdir -p /jpetstore/scripts/sql
-COPY sql/ /jpetstore/scripts/sql/
-COPY scripts/db-loaddata.sh /jpetstore/scripts/
+COPY ${WORKSPACE}/docker/db/sql/ /jpetstore/scripts/sql/
+COPY ${WORKSPACE}/docker/db/scripts/db-loaddata.sh /jpetstore/scripts/
 RUN chmod 700 /jpetstore/scripts/db-loaddata.sh
 #RUN echo "hello"
 
