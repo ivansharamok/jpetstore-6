@@ -17,6 +17,10 @@ services:
       placement:
         constraints:
         - node.labels.database == mysql
+    secrets:
+      - mysql_root_password
+      - mysql_user
+      - mysql_password
     networks:
     - jps-net
     volumes:
@@ -26,6 +30,13 @@ services:
       # - mysqldata: /var/lib/mysql
         # volume:
         #   nocopy: true
+secrets:
+  mysql_root_password:
+    external: true
+  mysql_user:
+    external: true
+  mysql_password:
+    external: true
 
 networks:
   jps-net:

@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+
+  webapp:
+    image: ${DTR_URL}/alex/jps
+    environment:
+    # it's assumed that variables are defined in jenkins project 
+    # and corresponding secrets exist in orchestration environment
+    - DB_HOST=jps_db
+    - MYSQL_ROOT_PASSWORD=$(cat /run/secrets/mysql_root_password)
+    ports:
+      - target: 8080
+        published: 8000
+    deploy:
+      placement:
+        constraints:
+        - node.labels.database == mysql
+    secrets:
+    - mysql_root_password
+    networks:
+    - jps-net
+
+secrets:
+  mysql_root_password:
+    external: true
+
+networks:
+  jps-net:
+    # driver: overlay
