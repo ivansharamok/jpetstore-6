@@ -5,9 +5,9 @@ services:
   mysql:
     image: ${DTR_URL}/alex/mysql-jps
     environment:
-      # it's assumed that variables are defined in jenkins project 
-      # and corresponding secrets exist in orchestration environment
-      MYSQL_ROOT_PASSWORD_FILE=/run/secrets/${DB_ROOT_PASSWORD_SECRET}
+    # it's assumed that variables are defined in jenkins project 
+    # and corresponding secrets exist in orchestration environment
+    - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/${DB_ROOT_PASSWORD_SECRET}
       MYSQL_PASSWORD_FILE=/run/secrets/${DB_PASSWORD_SECRET}
       MYSQL_USER_FILE=/run/secrets/${DB_USER_SECRET}
     ports:
