@@ -13,6 +13,16 @@ services:
         - node.labels.database == mysql
     networks:
     - jps-net
+    volumes:
+      - type: volume
+        mysqldata: /var/lib/mysql
+        # volume:
+        #   nocopy: true
 
 networks:
   jps-net:
+
+volumes:
+  mysqldata:
+    external: true
+    name: mysqldata
