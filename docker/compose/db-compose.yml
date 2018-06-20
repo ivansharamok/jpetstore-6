@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+
+  mysql:
+    image: ${DTR_URL}/alex/mysql-jps
+    ports:
+      - target: 3306
+        published: 3306
+    deploy:
+      placement:
+        constraints:
+        - node.labels.database == mysql
+    networks:
+    - jps-net
+
+networks:
+  jps-net:

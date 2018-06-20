@@ -10,6 +10,7 @@ ENV MYSQL_DATABASE=jpetstore \
     MYSQL_PASSWORD=jps
 
 #ADD sql/jps-schema.sql /docker-entrypoint-initdb.d/
+# use WORKSPACE variable from jenkins server
 ADD ${WORKSPACE}/docker/db/sql/jps-schema-if-not-exists.sql /docker-entrypoint-initdb.d/
 RUN mkdir -p /jpetstore/scripts/sql
 COPY ${WORKSPACE}/docker/db/sql/ /jpetstore/scripts/sql/
