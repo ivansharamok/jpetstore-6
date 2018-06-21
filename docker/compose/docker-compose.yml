@@ -38,7 +38,7 @@ services:
     # and corresponding secrets exist in orchestration environment
     - DB_HOST=mysql
     # must use $$ to escape command in compose file
-    - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+    - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
     ports:
       - target: 8080
         published: 8000
